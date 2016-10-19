@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <label for="content" class="col-md-2 control-label">Content</label>
                         <div class="col-lg-10">
-                            <textarea class="form-control" rows="3" id="content" name="content">{!! $ticket->content !!}</textarea>
+                            <textarea class="form-control" rows="1" id="content" name="content">{!! $ticket->content !!}</textarea>
                         </div>
                     </div>
 
