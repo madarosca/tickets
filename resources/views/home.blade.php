@@ -1,17 +1,15 @@
 @extends('layouts.master')
-@section('title', 'Tickets Home')
+@section('title', 'Dashboard')
 
 @section('content')
-
-    <div class="container">
-        <div class="row banner">
-            <div class="col-md-12">
-                <h1 class="text-center margin-top-100 editContent">
-                    Learning Laravel 5 - Owned by Mada
-                </h1>
-                <h3 class="text-center margin-top-100 editContent">Ticket Managment Application</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Dashboard</div>
+                <div class="panel-body">You are logged in!</div>
             </div>
         </div>
     </div>
-
+</div>
 @endsection

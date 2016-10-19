@@ -11,12 +11,15 @@
 |
 */
 
-Route::get('/', 'HomeController@home');
+Route::get('users/register', 'Auth\RegisterController@showRegistrationForm');
+Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
 Route::get('/create', 'TicketsController@create');
 Route::post('/create', 'TicketsController@store');
 Route::get('/tickets', 'TicketsController@index');
 Route::get('/ticket/{slug?}', 'TicketsController@show');
 Route::get('/ticket/{slug?}/edit','TicketsController@edit');
+Route::post('users/register', 'Auth\RegisterController@register');
 Route::post('/ticket/{slug?}/edit','TicketsController@update');
 Route::post('/ticket/{slug?}/delete','TicketsController@destroy');
 Route::post('/comment', 'CommentsController@newComment');
@@ -42,3 +45,7 @@ Route::get('sendemail', function () {
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
