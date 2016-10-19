@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('title', 'View all tickets')
+
 @section('content')
 
     <div class="container col-md-8 col-md-offset-2">
