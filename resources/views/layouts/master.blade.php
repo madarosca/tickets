@@ -17,6 +17,7 @@
     <!-- Bootstrap Material Design -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap-material-design.css">
     <link rel="stylesheet" type="text/css" href="/css/ripples.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/my_app.css">
 </head>
 
 <body>

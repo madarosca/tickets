@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <label for="content" class="col-md-2 control-label">Content</label>
                         <div class="col-lg-10">
-                            <textarea class="form-control" rows="3" id="content" name="content">{!! $ticket->content !!}</textarea>
+                            <textarea class="form-control" rows="1" id="content" name="content">{!! $ticket->content !!}</textarea>
                         </div>
                     </div>
 
@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-10 col-md-offset-2">
-                            <button class="btn btn-default">Cancel</button>
+                            <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </div>

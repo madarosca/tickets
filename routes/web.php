@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('users/register', 'Auth\RegisterController@showRegistrationForm');
+
 Route::get('/', 'HomeController@index');
-Route::get('home', 'HomeController@index');
+Route::get('users/register', 'Auth\RegisterController@showRegistrationForm');
 Route::get('/create', 'TicketsController@create');
 Route::post('/create', 'TicketsController@store');
 Route::get('/tickets', 'TicketsController@index');
