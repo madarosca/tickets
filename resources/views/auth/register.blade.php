@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">Register</button>
-                                  <button type="reset" class="btn btn-default">Cancel</button>
+                                <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
                             </div>
                         </div>
                     </form>
