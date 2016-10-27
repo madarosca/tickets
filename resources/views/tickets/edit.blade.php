@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-10 col-md-offset-2">
-                            <button class="btn btn-default">Cancel</button>
+                            <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </div>

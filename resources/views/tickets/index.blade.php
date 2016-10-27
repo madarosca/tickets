@@ -16,28 +16,35 @@
             @endif
 
             @if ($tickets->isEmpty())
-                <p> There is no ticket.</p>
+                <div class="panel-body"> There are no tickets.</div>
             @else
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                <div class="row">
+                <div class="panel-body title-text-strong col-md-12 ">
+                    <div class="col-md-2">ID</div>
+                    <div class="col-md-4">Title</div>
+                    <div class="col-md-2">Status</div>
+                    <hr>
                     @foreach($tickets as $ticket)
-                        <tr>
-                            <td>{!! $ticket->id !!}</td>
-                            <td>
-                                <a href="{!! action('TicketsController@show', $ticket->slug) !!}">{!! $ticket->title !!} </a>
-                            </td>
-                            <td>{!! $ticket->status ? 'Pending' : 'Answered' !!}</td>
-                        </tr>
+                        <div class="row">
+                        <div class="panel-body col-md-12">
+                            <div class="col-md-2">{!! $ticket->id !!}</div>
+                            <div class="col-md-4"><a href="{!! action('TicketsController@show', $ticket->slug) !!}">{!! $ticket->title !!} </a></div>
+                            <div class="col-md-2">{!! $ticket->status ? 'Pending' : 'Answered' !!}</div>
+                            <div class="col-md-2">
+                                <a href="{!! action('TicketsController@edit', $ticket->slug) !!}" class="btn btn-info btn-sm" style="margin:-5px 0 0 0">Edit</a></div>
+                            <div class="col-md-2">
+                                <form method="post" action="{!! action('TicketsController@destroy', $ticket->slug) !!}">
+                                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                            <div>
+                                <button type="submit" class="btn btn-warning btn-sm" style="margin:-5px 0 0 0">Delete</button>
+                            </div>
+                            </form></div>
+                        </div>
+                        </div>
                     @endforeach
                     </tbody>
-                </table>
+                </div>
+                </div>
             @endif
         </div>
     </div>

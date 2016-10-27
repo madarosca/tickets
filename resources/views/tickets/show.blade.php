@@ -10,6 +10,7 @@
                 <p> <strong>Status</strong>: {!! $ticket->status ? 'Pending' : 'Answered' !!}</p>
                 <p> <strong>Description</strong>: {!! $ticket->content !!} </p>
             </div>
+<<<<<<< HEAD
             <a href="{!! action('TicketsController@edit', $ticket->slug) !!}" class="btn btn-info pull-left">Edit</a>
 
             <form method="post" action="{!! action('TicketsController@destroy', $ticket->slug) !!}" class="pull-left">
@@ -18,6 +19,8 @@
                         <button type="submit" class="btn btn-warning">Delete</button>
                     </div>
             </form>
+=======
+>>>>>>> refs/remotes/tickets/master
             <div class="clearfix"></div>
         </div>
 
@@ -51,17 +54,23 @@
                 <fieldset>
                     <legend>Reply:</legend>
                     <div class="form-group">
+<<<<<<< HEAD
                         <div class="col-lg-12">
                             <textarea class="form-control" rows="1" id="content" name="content">
                             </textarea>
                             <span class="help-block">Leave your reply here</span>
                             
+=======
+                        <div class="col-md-12">
+                            <textarea class="form-control" rows="1" id="content" name="content"></textarea>
+                            <span class="help-block">Leave your reply here</span>
+>>>>>>> refs/remotes/tickets/master
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <button type="reset" class="btn btn-default">Cancel</button>
+                            <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
                             <button type="submit" class="btn btn-primary">Post</button>
                         </div>
                     </div>
