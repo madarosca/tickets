@@ -15,9 +15,10 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Bootstrap Material Design -->
+    <link rel="stylesheet" type="text/css" href="/css/my_app.css">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap-material-design.css">
     <link rel="stylesheet" type="text/css" href="/css/ripples.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/my_app.css">
+    <link rel="stylesheet" type="text/css" href="/css/buttons.css">
 </head>
 
 <body>
@@ -41,6 +42,18 @@
         // This command is used to initialize some elements and make them work properly
         $.material.init();
     });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.navbar li').click(function(e) {
+        $('.navbar-nav li.active').each (function() {
+            $(this).removeClass('active');
+        });
+        $(this).addClass('active');
+        console.log($(this));
+    });
+});
 </script>
 
 </body>

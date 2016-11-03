@@ -17,9 +17,13 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->text('content');
             $table->integer('post_id');
-            $table->integer('user_id')->nullable();
+            $table->integer('user_id')->unsigned();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
+        });
+
+        Schema::table('comments', function ($table) {
+        $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -10,39 +10,38 @@
     @endif
         <div class="panel panel-default">
             <div class="panel-heading">
-                    <h3>Edit ticket</h3>
+                    <h3>Edit your profile</h3>
             </div>
         <div class="well well bs-component">
-            <form class="form-horizontal" method="post">
+            <form class="form-horizontal col-md-offset-2" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 @foreach ($errors->all() as $error)
                     <p class="alert alert-danger">{{ $error }}</p>
                 @endforeach
                     <div class="form-group">
-                        <label for="title" class="col-md-1 control-label">Title</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" id="title" name="title" value="{{ $ticket->title }}">
+                        <label for="title" class="col-md-1 control-label">Name</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="content" class="col-md-1 control-label">Content</label>
-                        <div class="col-md-10">
-                            <textarea class="form-control" rows="1" id="content" name="content">{{ $ticket->content }}</textarea>
+                        <label for="email" class="col-md-1 control-label">E-mail</label>
+                        <div class="col-md-8">
+                            <input id="email" type="email" class="form-control" name="email" value="{{ $user->email }}">
                         </div>
+                         @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                     </div>
-
                     <div class="form-group">
-                        <label class="col-md-2 col-md-offset-1">
-                            <input type="checkbox" name="status" {!! $ticket->status?"":"checked"!!} > Close this ticket
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-10 col-md-offset-1">
+                        <div class="col-md-8 col-md-offset-1">
                             <a href="{{ URL::previous() }}" class="btn btn-danger gradient btn-sm">Cancel</a>
                             <button type="submit" class="btn btn-info gradient btn-sm pull-right">Update</button>
                         </div>
                     </div>
-                </form>
+            </form>
             </div>
         </div>
     </div>

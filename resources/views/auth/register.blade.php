@@ -69,8 +69,8 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">Register</button>
-                                <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
+                                <button type="submit" class="btn btn-primary gradient btn-sm">Register</button>
+                                <a href="{{ URL::previous() }}" class="btn btn-danger gradient btn-sm pull-right">Cancel</a>
                             </div>
                         </div>
                     </form>

@@ -1,28 +1,32 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\Http\Requests\TicketFormRequest;
-
-use App\Ticket;
-
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+use App\Ticket;
+use App\User;
+use App\Comment;
 
 class TicketsController extends Controller
 {
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tickets = Ticket::all();
-        return view('tickets.index', compact('tickets'));
+        $ticket = Ticket::orderBy('id', 'desc')->get();
+        
+        return view('tickets.index', compact('ticket'));
+
     }
 
     /**
@@ -44,10 +48,13 @@ class TicketsController extends Controller
     public function store(TicketFormRequest $request)
     {
         $slug = uniqid();
+        $user = Auth::user()->id;
         $ticket = new Ticket(array(
             'title' => $request->get('title'),
             'content' => $request->get('content'),
-            'slug' => $slug
+            'slug' => $slug,
+            'user_id' => $user
+
         ));
 
         $ticket->save();
@@ -56,13 +63,12 @@ class TicketsController extends Controller
             'ticket' => $slug,
         );
 
-        Mail::send('emails.ticket', $data, function ($message) {
-            $message->from('yourEmail@domain.com', 'Learning Laravel');
+        //Mail::send('emails.ticket', $data, function ($message) {
+        //    $message->from('yourEmail@domain.com', 'Learning Laravel');
+        //    $message->to('yourEmail@domain.com')->subject('There is a new ticket!');
+        //});
 
-            $message->to('yourEmail@domain.com')->subject('There is a new ticket!');
-        });
-
-        return redirect('/contact')->with('status', 'Your ticket has been created! Its unique id is: ' . $slug);
+        return redirect('/tickets')->with('status', 'Your ticket has been created! Its unique id is: ' . $slug);
     }
 
     /**
@@ -108,7 +114,7 @@ class TicketsController extends Controller
             $ticket->status = 1;
         }
         $ticket->save();
-        return redirect(action('TicketsController@edit', $ticket->slug))->with('status', 'The ticket '.$slug.' has been updated!');
+        return redirect(action('TicketsController@index', $ticket->slug))->with('status', 'The ticket -'. $ticket->title. '- has been updated!');
 
     }
 

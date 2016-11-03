@@ -14,15 +14,19 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('users/register', 'Auth\RegisterController@showRegistrationForm');
-Route::get('/create', 'TicketsController@create');
-Route::post('/create', 'TicketsController@store');
+Route::get('/tickets/create', 'TicketsController@create');
+Route::post('/tickets/create', 'TicketsController@store');
 Route::get('/tickets', 'TicketsController@index');
+Route::get('/profile/edit', 'UsersController@edit');
+Route::post('/profile/edit', 'UsersController@update');
 Route::get('/ticket/{slug?}', 'TicketsController@show');
-Route::get('/ticket/{slug?}/edit','TicketsController@edit');
+Route::get('/ticket/edit/{slug?}','TicketsController@edit');
 Route::post('users/register', 'Auth\RegisterController@register');
-Route::post('/ticket/{slug?}/edit','TicketsController@update');
+Route::post('/ticket/edit/{slug?}','TicketsController@update');
 Route::post('/ticket/{slug?}/delete','TicketsController@destroy');
 Route::post('/comment', 'CommentsController@newComment');
+Auth::routes();
+Route::get('/home', 'HomeController@index');
 
 Route::get('sendemail', function () {
 
@@ -46,6 +50,4 @@ Route::get('sendemail', function () {
 
 
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index');

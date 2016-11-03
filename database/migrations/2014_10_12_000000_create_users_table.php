@@ -4,14 +4,14 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateTicketsTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
@@ -20,6 +20,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+        });
+
+        Schema::table('users', function ($table) {
+        $table->foreign('id')->references('user_id')->on('tickets');
+        $table->foreign('id')->references('user_id')->on('comments');
         });
     }
 

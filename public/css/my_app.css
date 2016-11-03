@@ -4,3 +4,55 @@
 .title-text-strong {
 	font-weight: bold;
 }
+
+.logo {
+	width: 5%;
+    display: inline-block !important;
+}
+
+.gradient {
+	color: #255;
+}
+
+.btn {
+	color: white !important;
+}
+
+.error_msg {
+	margin: 0 15px !important;
+}
+
+.navbar-nav>li a.active {
+	background-color: #03084B !important;
+}
+
+ .top-menu
+ {
+    font-weight: 500 !important;
+}
+
+.btn.btn-link {
+	color:#000 !important;
+}
+
+.panel_totals {
+	font-size: 16px !important;
+	color: #000;
+}
+
+.navbar .dropdown-menu li > a, .navbar.navbar-default .dropdown-menu li > a {
+    font-size: 14px !important;
+}
+.dropdown-menu>li>a {
+	padding: 3px 30px !important;
+}
+
+.dropdown-menu {
+	min-width: 100% !important;
+}
+
+.dropdown-menu>li>a:hover {
+	color: #050E7D !important;
+}
+
+
