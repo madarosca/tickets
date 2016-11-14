@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Edit a ticket')
+@section('title', 'Edit your profile')
 
 @section('content')
     <div class="container col-md-10 col-md-offset-1">

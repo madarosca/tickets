@@ -14,9 +14,10 @@ class ComposerStaticInit395d087c8a2b47f32fc154681187050f
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        '752af1c2bdb339e8474c3c31b22b7d54' => __DIR__ . '/..' . '/illuminate/html/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -59,6 +60,7 @@ class ComposerStaticInit395d087c8a2b47f32fc154681187050f
         'P' => 
         array (
             'Psy\\' => 4,
+            'Psr\\Log\\' => 8,
             'PhpParser\\' => 10,
         ),
         'M' => 
@@ -71,6 +73,7 @@ class ComposerStaticInit395d087c8a2b47f32fc154681187050f
         ),
         'I' => 
         array (
+            'Illuminate\\Html\\' => 16,
             'Illuminate\\' => 11,
         ),
         'F' => 
@@ -81,6 +84,9 @@ class ComposerStaticInit395d087c8a2b47f32fc154681187050f
         array (
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Cache\\' => 22,
+            'Doctrine\\Common\\Annotations\\' => 28,
+            'Doctrine\\Common\\' => 16,
             'DeepCopy\\' => 9,
         ),
         'C' => 
@@ -186,6 +192,10 @@ class ComposerStaticInit395d087c8a2b47f32fc154681187050f
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src/Psy',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -197,6 +207,10 @@ class ComposerStaticInit395d087c8a2b47f32fc154681187050f
         'League\\Flysystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
+        ),
+        'Illuminate\\Html\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/html',
         ),
         'Illuminate\\' => 
         array (
@@ -213,6 +227,18 @@ class ComposerStaticInit395d087c8a2b47f32fc154681187050f
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
+        ),
+        'Doctrine\\Common\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
+        ),
+        'Doctrine\\Common\\Annotations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
+        ),
+        'Doctrine\\Common\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
         ),
         'DeepCopy\\' => 
         array (
@@ -239,10 +265,6 @@ class ComposerStaticInit395d087c8a2b47f32fc154681187050f
     public static $prefixesPsr0 = array (
         'P' => 
         array (
-            'Psr\\Log\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/psr/log',
-            ),
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
@@ -268,9 +290,21 @@ class ComposerStaticInit395d087c8a2b47f32fc154681187050f
         ),
         'D' => 
         array (
+            'Doctrine\\DBAL\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/dbal/lib',
+            ),
+            'Doctrine\\Common\\Lexer\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
+            ),
             'Doctrine\\Common\\Inflector\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
+            ),
+            'Doctrine\\Common\\Collections\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
         ),
         'C' => 
@@ -283,11 +317,16 @@ class ComposerStaticInit395d087c8a2b47f32fc154681187050f
     );
 
     public static $classMap = array (
-        'CreateBlaTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_01_093327_create_bla_table.php',
+        'AddActiveToTicketsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_07_094255_add_active_to_tickets_table.php',
+        'AddPriorityIdToTickets' => __DIR__ . '/../..' . '/database/migrations/2016_11_07_073631_add_priority_id_to_tickets.php',
         'CreateCommentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_11_153418_create_comments_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-        'CreateTicketsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_01_093422_create_tickets_table.php',
+        'CreatePrioritiesTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_04_133328_create_priorities_table.php',
+        'CreateStatusesTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_07_073117_create_statuses_table.php',
+        'CreateTicketsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
+        'DropTablePriorities' => __DIR__ . '/../..' . '/database/migrations/2016_11_07_123408_drop_table_priorities.php',
+        'DropTableStatuses' => __DIR__ . '/../..' . '/database/migrations/2016_11_07_123421_drop_table_statuses.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
@@ -732,6 +771,7 @@ class ComposerStaticInit395d087c8a2b47f32fc154681187050f
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'RenameStatusColumn' => __DIR__ . '/../..' . '/database/migrations/2016_11_07_074217_rename_status_column.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',

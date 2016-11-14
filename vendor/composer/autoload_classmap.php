@@ -6,11 +6,16 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CreateBlaTable' => $baseDir . '/database/migrations/2016_11_01_093327_create_bla_table.php',
+    'AddActiveToTicketsTable' => $baseDir . '/database/migrations/2016_11_07_094255_add_active_to_tickets_table.php',
+    'AddPriorityIdToTickets' => $baseDir . '/database/migrations/2016_11_07_073631_add_priority_id_to_tickets.php',
     'CreateCommentsTable' => $baseDir . '/database/migrations/2016_09_11_153418_create_comments_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-    'CreateTicketsTable' => $baseDir . '/database/migrations/2016_11_01_093422_create_tickets_table.php',
+    'CreatePrioritiesTable' => $baseDir . '/database/migrations/2016_11_04_133328_create_priorities_table.php',
+    'CreateStatusesTable' => $baseDir . '/database/migrations/2016_11_07_073117_create_statuses_table.php',
+    'CreateTicketsTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+    'DropTablePriorities' => $baseDir . '/database/migrations/2016_11_07_123408_drop_table_priorities.php',
+    'DropTableStatuses' => $baseDir . '/database/migrations/2016_11_07_123421_drop_table_statuses.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
@@ -455,6 +460,7 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'RenameStatusColumn' => $baseDir . '/database/migrations/2016_11_07_074217_rename_status_column.php',
     'SebastianBergmann\\CodeCoverage\\CodeCoverage' => $vendorDir . '/phpunit/php-code-coverage/src/CodeCoverage.php',
     'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => $vendorDir . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
     'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => $vendorDir . '/phpunit/php-code-coverage/src/Driver/Driver.php',

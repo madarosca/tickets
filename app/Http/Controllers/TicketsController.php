@@ -1,14 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests;
-use App\Http\Requests\TicketFormRequest;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\LengthAwarePaginator;
+use App\Http\Requests;
+use App\Http\Requests\TicketFormRequest;
+use App\Comment;
+use App\Priority;
+use App\Status;
 use App\Ticket;
 use App\User;
-use App\Comment;
+
 
 class TicketsController extends Controller
 {
@@ -23,9 +28,10 @@ class TicketsController extends Controller
      */
     public function index(Request $request)
     {
-        $ticket = Ticket::orderBy('id', 'desc')->get();
-        
-        return view('tickets.index', compact('ticket'));
+        $tickets = Ticket::orderBy('id', 'desc')->paginate(10);
+        return view('tickets.index', array(
+            'tickets' => $tickets,
+        ));
 
     }
 
@@ -36,7 +42,11 @@ class TicketsController extends Controller
      */
     public function create()
     {
-        return view('tickets.create');
+        $priorities = Priority::all();
+        $status = Status::all();
+        return view('tickets.create', array(
+            'priorities' => $priorities,
+        ));
     }
 
     /**
@@ -49,10 +59,14 @@ class TicketsController extends Controller
     {
         $slug = uniqid();
         $user = Auth::user()->id;
+        $priorities = Priority::orderBy('id', 'asc')->get();
+        $status = Status::all();
         $ticket = new Ticket(array(
             'title' => $request->get('title'),
             'content' => $request->get('content'),
             'slug' => $slug,
+            'priority_id' => $request->get('priority'),
+            'status_id' => $status[0]->id,
             'user_id' => $user
 
         ));
@@ -80,8 +94,15 @@ class TicketsController extends Controller
     public function show($slug)
     {
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
-        $comments = $ticket->comments()->get();
+        $comments = $ticket->comments()->orderBy('id', 'desc')->get();
+        
         return view('tickets.show', compact('ticket', 'comments'));
+    }
+
+     public function mytickets()
+    {
+        $my_tickets = Ticket::where('user_id', '=', Auth::user()->id)->orderBy('id', 'desc')->paginate(15);
+        return view('tickets.mytickets', compact('my_tickets'));
     }
 
     /**
@@ -93,7 +114,8 @@ class TicketsController extends Controller
     public function edit($slug)
     {
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
-        return view('tickets.edit', compact('ticket'));
+        $priorities = Priority::orderBy('id', 'desc')->get();
+        return view('tickets.edit', compact('ticket', 'priorities'));
     }
 
     /**
@@ -106,15 +128,13 @@ class TicketsController extends Controller
     public function update($slug, TicketFormRequest $request)
     {
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
+        $priorities = Priority::orderBy('id', 'desc')->get();
         $ticket->title = $request->get('title');
         $ticket->content = $request->get('content');
-        if($request->get('status') != null) {
-            $ticket->status = 0;
-        } else {
-            $ticket->status = 1;
-        }
+        $ticket->priority_id = $request->get('priority');
         $ticket->save();
-        return redirect(action('TicketsController@index', $ticket->slug))->with('status', 'The ticket -'. $ticket->title. '- has been updated!');
+       
+        return redirect(action('TicketsController@index', $ticket->slug))->with('status', 'The ticket "'. $ticket->title. '" has been updated!');
 
     }
 
@@ -128,6 +148,6 @@ class TicketsController extends Controller
     {
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
         $ticket->delete();
-        return redirect('/tickets')->with('status', 'The ticket '.$ticket->title.' has been deleted!');
+        return redirect()->back()->with('status', 'The ticket "'.$ticket->title.'" has been deleted!');
     }
 }

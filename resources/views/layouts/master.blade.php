@@ -19,6 +19,11 @@
     <link rel="stylesheet" type="text/css" href="/css/bootstrap-material-design.css">
     <link rel="stylesheet" type="text/css" href="/css/ripples.min.css">
     <link rel="stylesheet" type="text/css" href="/css/buttons.css">
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/ripples.min.js"></script>
+    <script src="/js/material.min.js"></script>
 </head>
 
 <body>
@@ -27,11 +32,7 @@
 
 @yield('content')
 
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/ripples.min.js"></script>
-<script src="/js/material.min.js"></script>
+
 <script>
     window.Laravel = <?php echo json_encode([
         'csrfToken' => csrf_token(),
@@ -42,18 +43,6 @@
         // This command is used to initialize some elements and make them work properly
         $.material.init();
     });
-</script>
-
-<script type="text/javascript">
-$(document).ready(function () {
-    $('.navbar li').click(function(e) {
-        $('.navbar-nav li.active').each (function() {
-            $(this).removeClass('active');
-        });
-        $(this).addClass('active');
-        console.log($(this));
-    });
-});
 </script>
 
 </body>

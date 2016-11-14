@@ -20,6 +20,7 @@ Route::get('/tickets', 'TicketsController@index');
 Route::get('/profile/edit', 'UsersController@edit');
 Route::post('/profile/edit', 'UsersController@update');
 Route::get('/ticket/{slug?}', 'TicketsController@show');
+Route::get('/mytickets', 'TicketsController@mytickets');
 Route::get('/ticket/edit/{slug?}','TicketsController@edit');
 Route::post('users/register', 'Auth\RegisterController@register');
 Route::post('/ticket/edit/{slug?}','TicketsController@update');

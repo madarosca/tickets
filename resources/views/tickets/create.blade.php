@@ -14,11 +14,11 @@
             </div>
         <div class="panel-body">
             <form class="form-horizontal" method="post">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                 @foreach ($errors->all() as $error)
                     <p class="alert alert-danger">{{ $error }}</p>
                 @endforeach
-                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                
                 <fieldset>
                     <div class="form-group">
                         <label for="title" class="col-md-1 control-label">Subject</label>
@@ -31,15 +31,29 @@
                         <label for="content" class="col-md-1 control-label">Content</label>
                         <div class="col-md-10">
                             <textarea class="form-control" rows="1" id="content" name="content"></textarea>
-                            <span class="help-block">Feel free to ask us any question.</span>
+                            <span class="help-block">Feel free to ask us any questions.</span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-10 col-md-offset-1">
+
+                    <div class="form col-md-10 select_menu">
+                        <label for="priority" class="col-md-1 control-label">Priority</label>
+                        <div class="col-md-5">
+                            <select id="priority" class="selectpicker" name="priority">
+                                <option value="">Choose ticket priority...</option>
+                                @foreach($priorities as $priority)
+                                    <option value="{{$priority->id}}">{{$priority->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="form">
                             <a href="{{ URL::previous() }}" class="btn btn-danger gradient btn-sm">Cancel</a>
                             <button type="submit" class="btn btn-primary gradient btn-sm pull-right">Submit</button>
                         </div>
                     </div>
+                    
                 </fieldset>
             </form>
         </div>
